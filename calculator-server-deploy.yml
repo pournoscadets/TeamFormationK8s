@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calculator-server
+  labels:
+    app: calculator-server
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: calculator-server
+  template:
+    metadata:
+      labels:
+        app: calculator-server
+    spec:      
+      containers:
+      - name: calculator-server
+        image: afiuna/formation:main-857c06a-20260418040936
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          readOnlyRootFilesystem: false            
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "150Mi"
+          limits:
+            cpu: "500m"
+            memory: "1Gi"      
+          
