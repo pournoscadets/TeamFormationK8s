@@ -21,7 +21,7 @@ spec:
     spec:      
       containers:
       - name: calculator-server
-        image: afiuna/formation:main-857c06a-20260418040936
+        image: afiuna/formation:pr-11-f43f39a-20260418112537
         imagePullPolicy: IfNotPresent
         securityContext:
           readOnlyRootFilesystem: false            
